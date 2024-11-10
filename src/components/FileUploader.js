@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './FileUploader.css'; // Add custom styles
+import './FileUploader.css'; // Custom styles
 
 const FileUploader = () => {
   const [fileName, setFileName] = useState('');
@@ -11,10 +11,13 @@ const FileUploader = () => {
     if (file) {
       setFileName(file.name);
 
+      // Define harmful conditions based on file name or extension
       const harmfulKeywords = ['virus', 'malware', 'suspicious'];
       const isHarmfulKeyword = harmfulKeywords.some((keyword) =>
         file.name.toLowerCase().includes(keyword)
       );
+
+      // Check for specific file types (e.g., .pdf or .csv)
       const isPdfOrCsv = file.name.toLowerCase().endsWith('.pdf') || file.name.toLowerCase().endsWith('.csv');
 
       if (isHarmfulKeyword || isPdfOrCsv) {
@@ -25,7 +28,7 @@ const FileUploader = () => {
         const audio = new Audio('https://www.soundjay.com/button/beep-07.wav');
         audio.play();
       } else {
-        setMessage(`The file "${file.name}" appears safe.`);
+        setMessage(`The file "${file.name}" was successfully uploaded.`);
         setIsHarmful(false);
       }
     }
@@ -35,7 +38,7 @@ const FileUploader = () => {
     <div className="file-uploader">
       <input type="file" onChange={handleFileChange} />
       {fileName && (
-        <p className={`message ${isHarmful ? 'harmful' : 'safe'}`}>
+        <p className={`message ${isHarmful ? 'harmful' : 'success'}`}>
           {message}
         </p>
       )}

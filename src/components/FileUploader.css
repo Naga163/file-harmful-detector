@@ -1,25 +1,24 @@
 .file-uploader input {
-    margin-top: 1rem;
-    padding: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
+
+.message {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.message.harmful {
+  color: red;
+  animation: blink 1s step-start infinite;
+}
+
+.message.success {
+  color: green;
+}
+
+@keyframes blink {
+  50% {
+    color: blue;
   }
-  
-  .message {
-    margin-top: 1rem;
-    font-size: 1.5rem;
-  }
-  
-  .message.harmful {
-    color: red;
-    animation: blink 1s step-start infinite;
-  }
-  
-  .message.safe {
-    color: #33ff33;
-  }
-  
-  @keyframes blink {
-    50% {
-      color: blue;
-    }
-  }
-  
+}
